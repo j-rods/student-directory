@@ -23,9 +23,20 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index{ |student, index|
-  puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"}
+    students.each_with_index{ |student, index|
+    puts ("#{index + 1}. #{student[:name][0]}: #{student[:name]} (#{student[:cohort]} cohort)") if (student[:name][0] == "D") 
+    
+  }  
+
 end
+
+# print names that start with a specific letter, D
+# if student first letter starts with D
+  #print student name
+# else
+  #dont print
+# end
+
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
@@ -35,5 +46,3 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
-
-
