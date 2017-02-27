@@ -21,28 +21,41 @@ def print_header
   puts "The students of Villains Academy"
   puts "---------------"
 end
-
-def print(students)
-    students.each_with_index{ |student, index|
-    puts ("#{index + 1}. #{student[:name][0]}: #{student[:name]} (#{student[:cohort]} cohort)") if (student[:name][0] == "D") 
-    
-  }  
-
-end
-
 # print names that start with a specific letter, D
 # if student first letter starts with D
   #print student name
 # else
   #dont print
 # end
+# define a filter_function that checks if a name passed is equal to X
+  # if name == x
+    # true
+  # else
+    # false
+  # end
+# puts whole line if filter_function == true
+def print(students)
 
+    students.each_with_index{ |student, index|
+    name_filter = student[:name][0]
+    name_length = student[:name].length
+    student_name_and_details = "#{index + 1}. #{name_filter}: #{student[:name]} (#{student[:cohort]} cohort)"
+ 
+    puts student_name_and_details if name_filter == "D" && name_length <= 12 
+  }  
+end
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 
+# students is a variable that stores input_students, which stores any name given by user
 students = input_students
+# prints function print_header
 print_header
+
+# calls function print on students
 print(students)
+
+# calls function print_footer on students and prints the count of students
 print_footer(students)
