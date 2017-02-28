@@ -51,7 +51,7 @@ def input_students
     cohort = gets.chomp
     cohort.to_sym
   end
-  # return the array of students
+  # return the hash of students sorted by cohort
   students.sort_by! { |x| x[:cohort].downcase }
   students
 end
@@ -71,14 +71,13 @@ def print(students)
     student_hobby = students[count][:hobby]
     student_cohort = students[count][:cohort]
 
-
-    # sorted_by_cohorts = students.sort_by { |k| k[:cohort] }
-    # student_data = (students[count][:name]) + (sorted_by_cohorts[count][:cohort])
     student_data = "#{count + 1} #{student_name}, (#{student_cohort} cohort), Birth year: #{student_birth_year}, Hobby: #{student_hobby}"
-    
+    #prints student data if the student starts by the letter D and the length is equal or less than 12 characters long
     puts "#{student_data}".center(80) if (name_filter == "D" && name_length <= 12)
     count += 1
   end
+  # prints the list of students that meet all the set conditions
+  # prints the list of students with a list number, starting by 1
   students
 end
 
