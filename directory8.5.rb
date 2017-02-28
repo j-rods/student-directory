@@ -15,7 +15,7 @@ def input_students
   hobby = gets.chomp
 
   # while the name is not empty, repeat this code
-  while !name.empty? || !birth_year.empty? do
+  while !name.empty? do
     # add the student hash to the array
     students << {name: name, birth_year: birth_year, hobby: hobby, cohort: :november}
     puts "Now we have #{students.count} students"
