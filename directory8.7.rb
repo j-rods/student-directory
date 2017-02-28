@@ -1,3 +1,8 @@
+def cohorts
+  cohort = ["January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December"]
+end
+
 def input_students
   puts "Villains Academy Student Directory"
   puts "Please enter a student name:"
@@ -14,28 +19,40 @@ def input_students
   puts "To skip, just hit return"
   hobby = gets.chomp
 
-  puts "Please add the student's cohort (March or November):"
+  puts "Please add the student's cohort (i.e March):"
   puts "To skip, just hit return"
   cohort = gets.chomp
   cohort.to_sym
-  # while the name is not empty, repeat this code
+
   while !name.empty? do
-    # add the student hash to the array     
-      students << {name: name, birth_year: birth_year, hobby: hobby, cohort: cohort} 
-      puts "Now we have #{students.count} students"
-      puts "Make sure that the #{cohort[cohort]} cohort has been typed correctly or may not be listed..."
-      # get another name from the user
-      puts "Please enter another student name, year of birth (i.e 1980), hobby and cohort:"
-      puts "To skip the input form and finish, please hit return 4 times, till end"
-      name = gets.chomp
-      birth_year = gets.chomp
-      hobby = gets.chomp
-      cohort = gets.chomp
-      cohort.to_sym
+    puts "Are these details correct?" 
+    puts "Name: #{name},"
+    puts "Birth Year: #{if birth_year.empty? then (birth_year = "no data") else birth_year end}," 
+    puts "Hobby: #{if hobby.empty? then (hobby = "no data") else hobby end},"
+    puts "Cohort: #{if cohort.empty? then (cohort = "no data") else cohort end}."
+    
+    puts "Please make sure details are correct or student may not be listed, Type Y/N:"
+    confirmation = gets.chomp
+
+      if (confirmation == "Y".upcase || confirmation == "Y".downcase) && (cohorts.include? cohort)   
+        # add the student hash to the array     
+        students << {name: name, birth_year: birth_year, hobby: hobby, cohort: cohort}
+        puts "Now we have #{students.count} students"
+        # get another name from the user
+      else
+        puts "Input error, please try again."
+        exit(0)
+      end
+    puts "Please enter another student name, year of birth (i.e 1980), hobby and cohort:"
+    puts "To skip the input form and finish, please hit return 4 times, till end"
+    name = gets.chomp
+    birth_year = gets.chomp
+    hobby = gets.chomp
+    cohort = gets.chomp
+    cohort.to_sym
   end
   # return the array of students
   students
-
 end
 
 def print_header
@@ -54,8 +71,8 @@ def print(students)
     student_hobby = students[count][:hobby]
 
     
-    puts "#{count + 1} #{student_name}, (#{student_cohort} cohort), #{student_birth_year}, #{student_hobby}".center(80) if
-    (name_filter == "D" && name_length <= 12) && (student_cohort == "March" || student_cohort == "November")
+    puts "#{count + 1} #{student_name}, #{student_cohort} cohort), Birth year: #{student_birth_year}, Hobby: #{student_hobby}".center(80) if
+    (name_filter == "D" && name_length <= 12)
     count += 1
   end
 end
