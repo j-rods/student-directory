@@ -20,7 +20,7 @@ def input_students
     students << {name: name, birth_year: birth_year, hobby: hobby, cohort: :november}
     puts "Now we have #{students.count} students"
     # get another name from the user
-    puts "Please enter another student name, birth year(i.e 1980) and hobby:"
+    puts "Please enter another student name, year of birth(i.e 1980) and hobby:"
     puts "To skip and finish, just hit return 3 times"
     name = gets.chomp
     birth_year = gets.chomp
