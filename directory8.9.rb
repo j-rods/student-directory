@@ -84,7 +84,9 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  # student_number will select singular on first student input and plural on 2 or more student inputs
+  student_number = if students.count >= 2 then "students" else "student" end
+  puts "Overall, we have #{students.count} great #{student_number}"
 end
 
 # students is a variable that stores input_students, which stores any name given by user
