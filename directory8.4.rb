@@ -29,7 +29,7 @@ def print(students)
     name_filter = students[count][:name][0]
     name_length = students[count][:name].length
 
-    puts "#{count + 1} #{students[count][:name]}" if (name_filter == "D" && name_length <= 12 )
+    puts "#{count + 1} #{students[count][:name]} (#{students[count][:cohort]} cohort)" if (name_filter == "D" && name_length <= 12 )
     count += 1
   end
 end
