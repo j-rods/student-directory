@@ -72,12 +72,5 @@ def print_footer
   puts "Overall, we have #{@students.count} great students"
 end
 
-# students is a variable that stores input_students, which stores any name given by user
-
-# prints function print_header
-
-# calls function print on students
-
-
-# calls function print_footer on students and prints the count of students
+# starts program with menu
 interactive_menu

@@ -70,7 +70,7 @@ def print(students)
     student_birth_year = students[count][:birth_year]
     student_hobby = students[count][:hobby]
 
-    
+      
     puts "#{count + 1} #{student_name}, #{student_cohort} cohort), Birth year: #{student_birth_year}, Hobby: #{student_hobby}".center(80) if
     (name_filter == "D" && name_length <= 12)
     count += 1
