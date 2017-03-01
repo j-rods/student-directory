@@ -21,19 +21,7 @@ def print_header
   puts "The students of Villains Academy"
   puts "---------------"
 end
-# print names that start with a specific letter, D
-# if student first letter starts with D
-  #print student name
-# else
-  #dont print
-# end
-# define a filter_function that checks if a name passed is equal to X
-  # if name == x
-    # true
-  # else
-    # false
-  # end
-# puts whole line if filter_function == true
+
 def print(students)
 
     students.each_with_index{ |student, index|
