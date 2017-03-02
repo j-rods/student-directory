@@ -2,7 +2,6 @@
 
 def interactive_menu
   loop do
-    try_load_students
     print_menu
     process(STDIN.gets.chomp)
   end
@@ -95,7 +94,8 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(", ")
-    @students << {name: name, cohort: cohort.to_sym}  
+    @students << {name: name, cohort: cohort.to_sym}
+
   end
   file.close
 end
@@ -111,6 +111,7 @@ def try_load_students
     exit # quits the program
   end  
 end
-
+# tries to load existing students.csv
+try_load_students
 # starts program with menu
 interactive_menu
