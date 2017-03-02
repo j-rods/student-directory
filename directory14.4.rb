@@ -1,4 +1,5 @@
 @students = []
+STUDENT_DATABASE = "students.csv"
 
 # define method student_list that takes 2 arguments, name and cohort
 # this method can be called when the hash needs to be populated or called. 
@@ -17,8 +18,8 @@ def print_menu
   puts "Menu:"
   puts "1. Input the students"
   puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load the list from students.csv"
+  puts "3. Save the list to the student database"
+  puts "4. Load the list from the student database"
   puts "5. Exit"
 end
 
@@ -37,7 +38,7 @@ def process(selection)
       puts "Option 4 Selected"
       load_from_file #loads list of students
     when "5"
-      puts "Exiting Program..."
+      puts "Exiting database..."
       exit # this will cause the program to terminate
     else
       puts "I don't know what you meant, try again"
@@ -88,7 +89,7 @@ end
 # this method saves student lists to file
 def save_to_file
   # open the file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(STUDENT_DATABASE, "w")
   # iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
@@ -98,7 +99,7 @@ def save_to_file
   file.close
 end
 # this method takes 1 argument and populates it with filename.
-def load_from_file(filename = "students.csv") 
+def load_from_file(filename = STUDENT_DATABASE) 
   file = File.open(filename, "r") # the filename is loaded
   puts "Filename: #{filename} loaded."
   file.readlines.each do |line| # 
