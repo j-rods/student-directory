@@ -45,8 +45,6 @@ def process(selection)
   end
 end
 
-# define a method that 
-
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
