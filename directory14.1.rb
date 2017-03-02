@@ -1,5 +1,7 @@
 @students = []
 
+# define method student_list that takes 2 arguments, name and cohort
+# this method can be called when the hash needs to be populated or called. 
 def student_list(name, cohort = :november)
   @students << {name: name, cohort: :november}
 end
