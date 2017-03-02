@@ -18,8 +18,7 @@ def print_menu
   puts "2. Show the students"
   puts "3. Save the list to students.csv"
   puts "4. Load the list from students.csv"
-  puts "9. Exit" # 9 because we'll be adding more items 
-end
+  puts "5. Exit"
 
 def process(selection)
   case selection
@@ -31,7 +30,7 @@ def process(selection)
       save_to_file #saves students
     when "4"
       load_from_file #loads list of students
-    when "9"
+    when "5"
       exit # this will cause the program to terminate
     else
       puts "I don't know what you meant, try again"
