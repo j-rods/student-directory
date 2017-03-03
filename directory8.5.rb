@@ -6,9 +6,9 @@ def input_students
   # get the first name
   name = gets.chomp
 
-  puts "Please add the student's birth year:"
+  puts "Please add the student's country of birth:"
   puts "To skip, just hit return"
-  birth_year = gets.chomp
+  country_of_birth = gets.chomp
 
   puts "Please add the student's hobby:"
   puts "To skip, just hit return"
@@ -17,18 +17,17 @@ def input_students
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    students << {name: name, birth_year: birth_year, hobby: hobby, cohort: :november}
+    students << {name: name, country_of_birth: country_of_birth, hobby: hobby, cohort: :november}
     puts "Now we have #{students.count} students"
-    # get another name from the user
-    puts "Please enter another student name, birth year(i.e 1980) and hobby:"
+    # get another name, country of birth and hobby info from the user
+    puts "Please enter another student name, country of birth and hobby:"
     puts "To skip and finish, just hit return 3 times"
     name = gets.chomp
-    birth_year = gets.chomp
+    country_of_birth = gets.chomp
     hobby = gets.chomp
   end
   # return the array of students
   students
-
 end
 
 def print_header
@@ -43,15 +42,16 @@ def print(students)
     name_length = students[count][:name].length
     student_name = students[count][:name]
     student_cohort = students[count][:cohort]
-    student_birth_year = students[count][:birth_year]
+    student_country = students[count][:country_of_birth]
     student_hobby = students[count][:hobby]
-    
-    puts "#{count + 1} #{student_name}, (#{student_cohort} cohort)\n" +
-    "Year of Birth: #{student_birth_year}\n"+ 
-    "Hobby: #{student_hobby}\n"+
-    "------------------" if (name_filter == "D" && name_length <= 12 )
+    if (name_filter == "D" && name_length <= 12 )
+      puts "#{count + 1} #{student_name}, (#{student_cohort} cohort), Country of birth: #{student_country}, Hobby: #{student_hobby}"
+    end
     count += 1
   end
+  # prints the list of students that meet all the set conditions
+  # prints the list of students with a list number, starting by 1
+  students
 end
 
 def print_footer(students)
