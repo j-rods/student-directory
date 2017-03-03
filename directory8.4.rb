@@ -23,15 +23,19 @@ def print_header
 end
 
 def print(students)
-
   count = 0
   while (count < students.length)
     name_filter = students[count][:name][0]
     name_length = students[count][:name].length
-
-    puts "#{count + 1} #{students[count][:name]} (#{students[count][:cohort]} cohort)" if (name_filter == "D" && name_length <= 12 )
+    #prints student data if the student starts by the letter D and the length is equal or less than 12 characters long
+    if (name_filter == "D") && (name_length <= 12) 
+    puts "#{count + 1} #{students[count][:name]} (#{students[count][:cohort]} cohort)"
+    end
     count += 1
   end
+  # prints the list of students that meet all the set conditions
+  # prints the list of students with a list number, starting by 1
+  students
 end
 
 def print_footer(students)
