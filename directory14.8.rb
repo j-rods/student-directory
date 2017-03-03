@@ -20,5 +20,6 @@ def print_students
     puts "Student #{count + 1}: #{@student_name[count][:name]} "
     count += 1
   end
-
 end
+
+input_students_name
