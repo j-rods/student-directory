@@ -1,8 +1,7 @@
-# To run program, type in command: ruby directory8.10.rb <studentname>
 def cohorts
-  cohort = ["January", "February", "March", "April", "May", "June", "July",
-    "August", "September", "October", "November", "December"]
+  cohort = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 end
+@default_input = "No data available"
 
 def input_students
   puts "Villains Academy Student Directory"
@@ -12,9 +11,9 @@ def input_students
   # create an empty array
   students = []
 
-  puts "Please add the student's year of birth (i.e 1980):"
+  puts "Please add the student's country of birth:"
   puts "To skip, just hit return"
-  birth_year = $stdin.gets.chomp
+  country_of_birth = $stdin.gets.chomp
 
   puts "Please add the student's hobby:"
   puts "To skip, just hit return"
@@ -28,28 +27,28 @@ def input_students
   while !name.empty? do
     puts "Are these details correct?" 
     puts "Name: #{name},"
-    puts "Birth Year: #{if birth_year.empty? then (birth_year = "no data") else birth_year end}," 
-    puts "Hobby: #{if hobby.empty? then (hobby = "no data") else hobby end},"
-    puts "Cohort: #{if cohort.empty? then (cohort = "no data") else cohort end}."
+    puts "Country of birth: #{if country_of_birth.empty? then (country_of_birth = @default_input) else country_of_birth end}," 
+    puts "Hobby: #{if hobby.empty? then (hobby = @default_input) else hobby end},"
+    puts "Cohort: #{if cohort.empty? then (cohort = @default_input) else cohort end}."
     
     puts "Please make sure details are correct or student may not be listed, Type Y/N:"
     confirmation = $stdin.gets.chomp
 
       if (confirmation == "Y".upcase || confirmation == "Y".downcase) && (cohorts.include? cohort)   
         # add the student hash to the array     
-        students << {name: name, birth_year: birth_year, hobby: hobby, cohort: cohort}
+        students << {name: name, country_of_birth: country_of_birth, hobby: hobby, cohort: cohort}
         # student_number will select singular on first student input and plural on 2 or more student inputs
         student_number = if students.count >= 2 then "students" else "student" end
         puts "Now we have #{students.count} #{student_number}"
-        # get another name from the user
       else
         puts "Input error, please try again."
         exit(0)
       end
-    puts "Please enter another student name, year of birth (i.e 1980), hobby and cohort:"
+    # get another name, country of birth, hobby and cohort info from the user
+    puts "Please enter another student name, country of birth, hobby and cohort:"
     puts "To skip the input form and finish, please hit return 4 times, till end"
     name = $stdin.gets.chomp
-    birth_year = $stdin.gets.chomp
+    country_of_birth = $stdin.gets.chomp
     hobby = $stdin.gets.chomp
     cohort = $stdin.gets.chomp
     cohort.to_sym
@@ -70,13 +69,13 @@ def print(students)
     name_filter = students[count][:name][0]
     name_length = students[count][:name].length
     student_name = students[count][:name]   
-    student_birth_year = students[count][:birth_year]
+    student_country = students[count][:country_of_birth]
     student_hobby = students[count][:hobby]
     student_cohort = students[count][:cohort]
-
-    student_data = "#{count + 1} #{student_name}, (#{student_cohort} cohort), Birth year: #{student_birth_year}, Hobby: #{student_hobby}"
     #prints student data if the student starts by the letter D and the length is equal or less than 12 characters long
-    puts "#{student_data}".center(80) if (name_filter == "D" && name_length <= 12)
+    if (name_filter == "D") && (name_length <= 12) 
+      puts "#{count + 1} #{student_name}, (#{student_cohort} cohort), Country of birth: #{student_country}, Hobby: #{student_hobby}".center(80)    
+    end
     count += 1
   end
   # prints the list of students that meet all the set conditions
@@ -85,7 +84,9 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  # student_number will select singular on first student input and plural on 2 or more student inputs
+  student_number = if students.count >= 2 then "students" else "student" end
+  puts "Overall, we have #{students.count} great #{student_number}"
 end
 
 # students is a variable that stores input_students, which stores any name given by user
