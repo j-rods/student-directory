@@ -1,5 +1,7 @@
-# prints all sourcecode from file to console
-IO.foreach(__FILE__) {|x| print " ", x }
+# opens file
+# runs block and prints all sourcecode from file to console
+# closes file at end of block
+IO.foreach(__FILE__) {|lines| puts lines }
 
 @student_name = []
 
@@ -21,5 +23,3 @@ def print_students
     count += 1
   end
 end
-
-input_students_name
