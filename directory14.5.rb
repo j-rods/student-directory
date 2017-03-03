@@ -52,7 +52,7 @@ def save_to_file
   puts "Select a save option: "
   puts "1. Save to current file"
   puts "2. Save as new file."
-  save_selection = $stdin.gets.chomp   
+  save_selection = STDIN.gets.chomp   
     if save_selection.include? "1" 
       save_to_current_file
     elsif save_selection.include? "2"
@@ -67,7 +67,7 @@ end
 # --> I am using students.csv as name file <---
 def create_new_file
   puts "Type the name of the file to be created:"  
-  temp_file = $stdin.gets.chomp
+  temp_file = STDIN.gets.chomp
 
   new_file = File.new(temp_file, "w+")
     if temp_file == STUDENT_DATABASE
